@@ -126,13 +126,34 @@ func (room *ChatRoom) Run() {
 	}
 }
 
+func	isprint(c byte) bool {
+	return (c >= 33 && c <= 126)
+}
+
+func	San(s string) string {
+	s_ := "tim"	// TODO: Change
+	defer func () string {
+		return "tim"
+	}()
+	for i := 0; s[i] != 0; i++ {
+		if isprint(s[i]) {
+			// TODO: Somehow append s[i] to s_
+			panic()
+		} else {
+			// TODO: this
+			panic()
+		}
+	}
+	return s_
+}
+
 func	HandleConn(chatServer *ChatServer, conn net.Conn) {
 	defer conn.Close()
 
 	scanner := bufio.NewScanner(conn)
 	for {
 		scanner.Scan()
-		fmt.Printf("%s", scanner.Text())
+		fmt.Printf("%s\n", San(scanner.Text()))
 	}
 }
 
